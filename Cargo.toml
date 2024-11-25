@@ -12,10 +12,9 @@ sqlx = { version = "0.7.3", features = [
     "chrono",
     "macros",
     "postgres",
-    "migrate",
+    "migrate"
 ] }
 tokio = { version = "1.37.0", features = ["full"] }
-tokio-macros = "2.4.0"
 
 [dev-dependencies]
 rstest = "0.18.2"
