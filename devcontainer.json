@@ -1,0 +1,16 @@
+{
+  "name": "Rust 1.82.0 Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/rust:1.82.0",
+  "postCreateCommand": "rustup component add rustfmt clippy && cargo install cargo-make",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "vadimcn.vscode-lldb",
+        "tamasfe.even-better-toml",
+        "serayuzgur.crates"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}
