@@ -83,6 +83,4 @@ async fn health_check_db_works(pool: sqlx::PgPool) {
     assert_eq!(status_code, StatusCode::OK);
 }
 
-async fn hoge() -> String {
-    "hello".into();
-}
+
