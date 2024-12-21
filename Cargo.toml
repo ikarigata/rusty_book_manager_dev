@@ -3,8 +3,22 @@ name = "rusty-book-manager"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies]
-anyhow = "1.0.75"
+[[bin]]
+# mainのクレートを変えたいときはココで指定
+name = "app"
+path = "src/bin/app.rs"
+
+[workspace]
+members = ["api", "kernel", "adapter", "shared", "registry"]
+
+
+[workspace.dependencies]
+adapter = { path = "./adapter" }
+api = { path = "./api" }
+kernel = { path = "./kernel" }
+shared = { path = "./shared" }
+registry = { path = "./registry" }
+anyhow = { version = "1.0.75", features = ["backtrace"] }
 axum = { version = "0.7.5", features = ["macros"] }
 sqlx = { version = "0.7.3", features = [
     "runtime-tokio",
@@ -12,9 +26,20 @@ sqlx = { version = "0.7.3", features = [
     "chrono",
     "macros",
     "postgres",
-    "migrate"
+    "migrate",
 ] }
 tokio = { version = "1.37.0", features = ["full"] }
-
-[dev-dependencies]
+async-trait = "0.1.74"
 rstest = "0.18.2"
+derive-new = "0.6.0"
+
+[dependencies]
+#ワークスペース共通で利用したい依存はココでtrueにしておく
+adapter.workspace = true
+api.workspace = true
+registry.workspace = true
+shared.workspace = true
+anyhow.workspace = true
+tokio.workspace = true
+axum.workspace = true
+sqlx.workspace = true
